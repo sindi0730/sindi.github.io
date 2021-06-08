@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<meta http-equiv="content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>我的第一个 HTML 页面</title>
+</head>
+
+<body>
+<h1>一家人快快乐乐</h1>
+<h2>财务总管：珩子妈</h2>
+<h3>在减肥的：张珩</h3>
+<h4>穷逼的：张琦</h4>
+<div class="radioList">
+	<input type="radio" class="radio1" name="radio1" value="1" checked="true">回收宝B1
+	<input type="radio" class="radio1" name="radio1" value="2">回收宝E1
+	<input type="radio" class="radio1" name="radio1" value="3">捡漏
+	<br>
+	<br>
+	<input id="price" type="text" name="price" placeholder="请输入价格">
+	<br>
+	<br>
+	<p><h1 id="show" style="color: red"></h1></p>
+</div>
+
+<script type="text/javascript">
+
+$('#price').bind('keypress',function(event){
+	if(event.keyCode == 13) {
+		init()
+	}
+})
+
+function init(){
+	var price = parseInt($('#price').val())
+		var realPrice
+		var type
+		$('.radio1').each(function(){
+			if ($(this).is(':checked')) {
+				type = this.value
+			}
+		})
+		if (type == 1 || type == '1') {
+			realPrice = huishoubaoB1(price)
+		}else if (type == 2 || type == '2') {
+
+
+
+			realPrice = huishoubaoE2(price)
+		}else if (type == 3 || type == '3') {
+			realPrice = jianlou(price)
+		}
+		$('#show').text(realPrice);
+		$('#price').val('');
+}
+
+function huishoubaoB1(price){
+	var realPrice;
+	if (price>=1 && price <=450) {realPrice = price - 15}
+	if (price>=451 && price <=750) {realPrice = price - 25}
+	if (price>=751 && price <=1100) {realPrice = price - 30}
+	if (price>=1101 && price <=1500) {realPrice = price - 40}
+	if (price>=1501 && price <=1999) {realPrice = price - 50}
+	if (price>=2000 && price <=2500) {realPrice = price - 65}
+	if (price>=2501 && price <=3000) {realPrice = price - 85}
+	if (price>=3001 && price <=4450) {realPrice = price - 115}
+	if (price>=4451 && price <=4499) {realPrice = price - 145}
+	if (price>=4500) {realPrice = price - 295}
+	return realPrice;
+}
+function huishoubaoE2(price){
+	var realPrice;
+	if (price>=1 && price <=300) {realPrice = price - 10}
+	if (price>=301 && price <=700) {realPrice = price - 20}
+	if (price>=701 && price <=1100) {realPrice = price - 30}
+	if (price>=1101 && price <=1500) {realPrice = price - 40}
+	if (price>=1501 && price <=1999) {realPrice = price - 50}
+	if (price>=2000 && price <=2500) {realPrice = price - 60}
+	if (price>=2501 && price <=3000) {realPrice = price - 90}
+	if (price>=3001 && price <=4450) {realPrice = price - 120}
+	if (price>= 4500) {realPrice = price - 300}
+	return realPrice;
+
+
+}
+function jianlou(price){
+	var realPrice;
+	if (price>=500 && price <=700) {realPrice = price - 35}
+	if (price>=701 && price <=900) {realPrice = price - 45}
+	if (price>=901 && price <=1200) {realPrice = price - 55}
+	if (price>=1201 && price <=1600) {realPrice = price - 65}
+	if (price>=1601 && price <=2500) {realPrice = price - 80}
+	if (price>=2501 && price <=5000) {realPrice = price - 100}
+	return realPrice;
+}
+</script>
+</body>
+</html>
